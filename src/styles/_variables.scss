@@ -174,11 +174,11 @@ $btn-font-size:               $font-size-base !default;
 $btn-line-height:             $line-height-base !default;
 
 // Alert
-$alert-font-weight:      400; 
+$alert-font-weight:           400; 
 $alert-font-family:             $font-family-base !default; 
 $alert-line-height:             $line-height-base !default;
-$alert-padding-y:               .25rem !default;
-$alert-padding-x:               .5rem !default;
+$alert-padding-y:               .75rem !default;
+$alert-padding-x:               1.25rem !default;
 $alert-border-width:             $border-width !default;
 
 //不同大小按钮的 padding 和 font size

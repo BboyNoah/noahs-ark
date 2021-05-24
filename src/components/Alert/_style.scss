@@ -1,0 +1,73 @@
+.alert {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: $alert-padding-y $alert-padding-x;
+  border: $alert-border-width solid transparent;
+  border-radius: $border-radius;
+  .alert-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .alert-title {
+      flex: 1;
+      font-family: $alert-font-family;
+      line-height: $alert-line-height;
+      font-size: $font-size-lg;
+    }
+    .alert-close-btn {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      cursor: pointer;
+    }
+  }
+  .alert-desc {
+    font-family: $alert-font-family;
+    line-height: $alert-line-height;
+  }
+}
+
+.alert-default {
+  @include alertType($primary, $primary, $white)
+}
+
+.alert-success {
+  @include alertType($success, $success, $white)
+}
+
+.alert-warning {
+  @include alertType($warning, $warning, $white)
+}
+
+.alert-danger {
+  @include alertType($danger, $danger, $white)
+}
+
+.alert-tran-enter {
+  opacity: 0;
+  transform: translatey(-100%);;
+}
+.alert-tran-enter-active {
+  opacity: 1;
+  transform: translatey(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-enter-done{
+  opacity: 1;
+}
+
+.alert-tran-exit {
+  opacity: 1;
+  transform: translatey(0);
+}
+.alert-tran-exit-active {
+  opacity: 0;
+  transform: translatey(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.alert-tran-exit-done {
+  opacity: 0;
+  display: none;
+}
