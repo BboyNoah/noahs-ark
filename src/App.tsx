@@ -2,12 +2,19 @@ import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Alert, { AlertType } from './components/Alert/alert'
 import Menu from './components/Menu/menu'
 import MemuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu'
+import Tabs from './components/Tabs/tabs'
+import TabItem from './components/Tabs/tabItem'
+import Icon from './components/Icon/icon'
+
 function App() {
   const alertStyleObj = {
     margin: '5px'
   }
+  
   return (
     <div className="App">
+      <Icon icon="arrow-down" size="lg" theme="danger" />
       <div>
         <Button> hello </Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> hello </Button>
@@ -53,20 +60,6 @@ function App() {
       <hr />
       <div>
         <Menu onSelect={(index) => {console.log(index)}}>
-          <MemuItem index={0}>
-            item 1
-          </MemuItem>
-          <MemuItem>
-            item 2
-          </MemuItem>
-          <MemuItem disabled>
-            link 3
-          </MemuItem>
-          <MemuItem>
-            item 4
-          </MemuItem>
-        </Menu>
-        <Menu mode='vertical' style={{marginLeft: '30px'}} onSelect={(index) => {console.log(index)}}>
           <MemuItem>
             item 1
           </MemuItem>
@@ -76,10 +69,60 @@ function App() {
           <MemuItem disabled>
             link 3
           </MemuItem>
+          <SubMenu title="dropdown">
+            <MemuItem>
+              subitem 1
+            </MemuItem>
+            <MemuItem>
+              subitem 2
+            </MemuItem>
+            <MemuItem>
+              subitem 3
+            </MemuItem>
+          </SubMenu>
           <MemuItem>
             item 4
           </MemuItem>
         </Menu>
+        <Menu mode='vertical' defaultOpenSubMenus={['3']} style={{marginLeft: '30px'}} onSelect={(index) => {console.log(index)}}>
+          <MemuItem>
+            item 1
+          </MemuItem>
+          <MemuItem>
+            item 2
+          </MemuItem>
+          <MemuItem disabled>
+            link 3
+          </MemuItem>
+          <SubMenu title="dropdown">
+            <MemuItem>
+              subitem 1
+            </MemuItem>
+            <MemuItem>
+              subitem 2
+            </MemuItem>
+            <MemuItem>
+              subitem 3
+            </MemuItem>
+          </SubMenu>
+          <MemuItem>
+            item 4
+          </MemuItem>
+        </Menu>
+      </div>
+      <hr />
+      <div>
+        <Tabs>
+          <TabItem label={<div>bbb</div>}>123</TabItem>
+          <TabItem label="test" disabled>456</TabItem>
+          <TabItem label="test">789</TabItem>
+        </Tabs>
+
+        <Tabs mode="border">
+          <TabItem label={<div>bbb</div>} disabled>123</TabItem>
+          <TabItem label="test">456</TabItem>
+          <TabItem label="test">789</TabItem>
+        </Tabs>
       </div>
     </div>
   );

@@ -12,6 +12,15 @@
     transition: $menu-transition;
     cursor: pointer;
 
+    .submenu-title {
+      display: flex;
+      align-items: center;
+      .ark-icon{
+        margin-left: 3px;
+        transition: all .3s;
+      }
+    }
+    
     &:hover, &:focus {
       text-decoration: none;
     }
@@ -38,53 +47,92 @@
       border-left: $menu-item-active-border-width solid $menu-item-active-color;
       border-bottom: 0px;
     }
+    .submenu-title {
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      
+    }
+    .submenu {
+      margin-left: 0px;
+      .ark-menu-item  {
+        border: none;
+      }
+    }
+  }
+  .submenu-item {
+    padding: 0;
+    width: 100%;
   }
 }
 
 .menu-horizontal{
+  .ark-menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
+  }
   .submenu-item{
       position: relative;
+      border: none;
+      
       .submenu-title{
           display: flex;
           justify-content: center;
           align-items: center;
-          .down-icon{
-              margin-left: 3px;
-          }
           &:hover{
               transition: all 2s;
-              .down-icon{
-                  transform: rotate(180deg);
-              }
+              .ark-icon{ 
+                transform: rotate(180deg);
+            }
           }
       }
+      .submenu {
+        position: absolute;
+        .ark-menu-item  {
+          border: none;
+        }
+      }
+      
   }
   }
 
   .down-icon{
     margin-left: 3px;
  }
- .is-vitical.menu-open{
-     .down-icon{
-         transition: 2s all;
+ .is-vertical.is-opened{
+     .ark-icon{
          transform: rotate(180deg);
      }
  }
+
+.is-vertival {
+  .ark-icon {
+    transform: rotate(0deg) !important;
+  }
+}
  
  .submenu{
-     position: absolute;
+     
      list-style: none;
      box-shadow: 0px 0px 15px #eee;
      padding: 0;
      top: 45px;
-     // margin-left: -34px;
-     display: none;
-     left: 5px;
+     margin-left: -8px;
+    //  display: none;
+    //  left: 5px;
      color:$body-color;
      background: #fff;
      z-index: 1;
+     
+     .ark-menu-item {
+      border-left: $menu-item-active-border-width solid transparent;
+      &.is-active, &:hover {
+        color: $menu-item-active-color;
+        border-left: $menu-item-active-border-width solid transparent;
+        border-bottom: 0px;
+      }
+    }
  }
  
  .menu-open{
-     display: block;
+    //  display: block;
  }

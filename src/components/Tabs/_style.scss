@@ -1,0 +1,59 @@
+.ark-tabs {
+    display: flex;
+    width: fit-content;
+    position: relative;
+    flex-direction: column;
+    .ark-tabs-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        border-bottom: $menu-border-width solid $menu-border-color;
+        box-shadow: $menu-box-shadow;
+
+        .ark-tab-item-label {
+            padding: $menu-item-padding-y $menu-item-padding-x;
+            transition: $menu-transition;
+            cursor: pointer;
+            
+            &:hover, &:focus {
+                text-decoration: none;
+            }
+            &:hover {
+                color: $menu-item-active-color;
+            }
+            &.is-tab-active {
+                color: $menu-item-active-color;
+            }
+            &.is-tab-diabled {
+                color: $menu-item-disabled-color;
+                cursor: default;
+                pointer-events: none;
+            }
+            
+        }
+        &.tabs-text {
+            .is-tab-active {
+                border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+            }
+        }
+        &.tabs-border {
+            border-bottom: none;
+            box-shadow: none;
+            .ark-tab-item-label {
+                border: $menu-border-width solid transparent;
+                border-bottom: $menu-border-width solid $menu-border-color;
+                box-shadow: $menu-box-shadow;
+            }
+            .is-tab-active {
+                border: $menu-border-width solid $menu-border-color;
+                border-bottom: $menu-border-width solid transparent;
+                box-shadow: none;
+                border-top-left-radius: $border-radius;
+                border-top-right-radius: $border-radius;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+            
+        }
+    }
+}
