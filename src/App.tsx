@@ -5,7 +5,6 @@ import MemuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
-import Icon from './components/Icon/icon'
 
 function App() {
   const alertStyleObj = {
@@ -14,7 +13,6 @@ function App() {
   
   return (
     <div className="App">
-      <Icon icon="arrow-down" size="lg" theme="danger" />
       <div>
         <Button> hello </Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> hello </Button>
