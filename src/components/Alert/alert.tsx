@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
-import {CSSTransition} from 'react-transition-group'
+import Transition from '../Transition/transition'
 
-export enum AlertType {
-  Success = 'success',
-  Default = 'default',
-  Danger = 'danger',
-  Warning = 'warning'
-}
+export type AlertType = 'success' | 'default' | 'danger' | 'warning'
 
 interface BaseAlertProps{
   title: string;
@@ -20,7 +15,6 @@ interface BaseAlertProps{
 
 const Alert: React.FC<BaseAlertProps> = (props) => {
   const [show, setShow] = useState(true)
-  const nodeRef = React.useRef(null)
   const {
     title,
     type,
@@ -33,15 +27,12 @@ const Alert: React.FC<BaseAlertProps> = (props) => {
     [`alert-${type}`]: type,
   })
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      classNames="alert-tran"
+    <Transition
+      animation="zoom-in-top"
       timeout={500}
       in={show}
-      appear={true}
     >
       <div
-        ref={nodeRef}
         className={classes}
         style={style}
       >
@@ -51,12 +42,12 @@ const Alert: React.FC<BaseAlertProps> = (props) => {
         </div>
           <div className="alert-desc">{description}</div>
       </div>
-    </CSSTransition>
+    </Transition>
   )
 }
 
 Alert.defaultProps = {
-  type: AlertType.Default,
+  type: "default",
   closable: true
 }
 

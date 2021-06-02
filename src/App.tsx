@@ -1,5 +1,5 @@
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
-import Alert, { AlertType } from './components/Alert/alert'
+import Button from './components/Button/button'
+import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
 import MemuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
@@ -10,17 +10,28 @@ function App() {
   const alertStyleObj = {
     margin: '5px'
   }
-  
+  const fn = () => {
+    return (
+      <Alert
+        title="测试"
+        type="warning"
+        onClose={() => {alert(123)}}
+        style={alertStyleObj}
+      />
+    )
+  }
   return (
     <div className="App">
       <div>
         <Button> hello </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> hello </Button>
-        <Button btnType={ButtonType.Danger}> danger </Button>
-        <Button btnType={ButtonType.Danger} disabled size={ButtonSize.Small}> danger </Button>
-        <Button btnType={ButtonType.Link} href="http://baidu.com"> baidu link </Button>
-        <Button btnType={ButtonType.Link} href="http://baidu.com" disabled> baidu link </Button>
-        <Button> hello </Button>
+        <Button btnType="primary" size="lg"> hello </Button>
+        <Button btnType="danger" > danger </Button>
+        <Button btnType="danger" disabled size="sm"> danger </Button>
+        <Button btnType="link" href="http://baidu.com"> baidu link </Button>
+        <Button btnType="link" href="http://baidu.com" disabled> baidu link </Button>
+        <Button onClick={() => {
+          fn()
+        }}> hello </Button>
       </div>
       <hr />
       <div>
@@ -30,17 +41,17 @@ function App() {
         />
         <Alert
           title="this is a alert"
-          type={AlertType.Success}
+          type="success"
           style={alertStyleObj}
         />
         <Alert
           title="this is a alert"
-          type={AlertType.Danger}
+          type="danger"
           style={alertStyleObj}
         />
         <Alert
           title="this is a alert"
-          type={AlertType.Warning}
+          type="warning"
           onClose={() => {alert(123)}}
           style={alertStyleObj}
         />

@@ -16,7 +16,6 @@ const TabItem: React.FC<TabItemProps> = (props) => {
     const {
         className,
         disabled,
-        children,
         index,
         label
     } = props
