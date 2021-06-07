@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import Transition from '../Transition/transition'
 
-export type AlertType = 'success' | 'default' | 'danger' | 'warning'
+// export type AlertType = 
 
-interface BaseAlertProps{
+export interface BaseAlertProps{
   title: string;
-  type?: AlertType;
+  type?: 'success' | 'default' | 'danger' | 'warning';
   description?: string; 
   closable?: boolean;
   style?: React.CSSProperties;
