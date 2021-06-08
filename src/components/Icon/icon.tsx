@@ -10,7 +10,7 @@ export interface IconProps extends FontAwesomeIconProps {
     theme?: ThemeProps;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
+export const Icon: React.FC<IconProps> = (props) => {
     const { theme, className, ...restProps } = props
     const classes = classNames('ark-icon', className, {
         [`icon-${theme}`]: theme

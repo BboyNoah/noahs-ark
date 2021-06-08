@@ -3,30 +3,31 @@ import { Story, Meta } from '@storybook/react';
 import Button,  { ButtonProps } from './button';
 
 export default {
-  title: 'Example/按钮 - Button',
+  title: 'Noah-Ark/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Some component _markdown_',
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} >button</Button>;
 
-/**
- * ## Button 组件
- * ~~~js
- * import Button from 'noah-ark'
- * ~~~
- */
-// ???
 export const Default = Template.bind({});
 Default.args = {
   btnType: 'default'
 };
-Default.storyName = 'Button'
+Default.storyName = '默认 Button'
 
-const Link = Template.bind({});
+export const Link = Template.bind({});
 Link.args = {
   btnType: 'link',
   href: 'www.baidu.com'
 };
+Link.storyName = '链接 Button'
 
 export const BtnType:Story<ButtonProps> = () => {
   return (
@@ -38,4 +39,4 @@ export const BtnType:Story<ButtonProps> = () => {
     </>
   )
 };
-BtnType.storyName = '按钮类型'
+BtnType.storyName = 'Button 类型'
