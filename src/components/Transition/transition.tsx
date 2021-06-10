@@ -14,7 +14,7 @@ export interface TransitionProps {
   wrapper?: boolean;
 }
 
-const Transition:React.FC<TransitionProps & CSSTransitionProps> = (props) => {
+export const Transition:React.FC<TransitionProps & CSSTransitionProps> = (props) => {
   const {
     animation,
     wrapper,

@@ -21,18 +21,18 @@ themeIcon.args = {
   theme: 'primary',
   icon: 'star'
 };
-themeIcon.storyName = '风格 Icon'
+themeIcon.storyName = '基于 Font Awesome Icon'
 
 export const IconThemes:Story<IconProps> = () => {
   return (
     <>
-      <Icon theme="primary" icon="at" />
-      <Icon theme="danger" icon="ban" />
-      <Icon theme="info" icon="info" />
-      <Icon theme="secondary" icon="star" />
-      <Icon theme="success" icon="check" />
-      <Icon theme="warning" icon="bell-exclamation" />
+      <Icon style={{margin: '5px'}} theme="primary" icon="at" />
+      <Icon style={{margin: '5px'}} theme="danger" icon="ban" />
+      <Icon style={{margin: '5px'}} theme="info" icon="info" />
+      <Icon style={{margin: '5px'}} theme="secondary" icon="star" />
+      <Icon style={{margin: '5px'}} theme="success" icon="check" />
+      <Icon style={{margin: '5px'}} theme="warning" icon="bell-exclamation" />
     </>
   )
 };
-IconThemes.storyName = 'Icon 主题'
+IconThemes.storyName = 'Icon 主题色'

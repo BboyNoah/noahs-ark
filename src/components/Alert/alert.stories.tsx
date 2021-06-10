@@ -39,7 +39,7 @@ export const AlertType:Story<BaseAlertProps> = () => {
       <Alert title="danger" type="danger" style={{margin: '5px'}} />
       <Alert title="warning" type="warning" style={{margin: '5px'}} />
       <Alert title="success" type="success" style={{margin: '5px'}} />
-      <Alert title="description" type="default" style={{margin: '5px'}} />
+      <Alert title="description" description="this is a description" type="default" style={{margin: '5px'}} />
       <Alert title="unclosable" type="default" closable={false} style={{margin: '5px'}} />
     </>
   )

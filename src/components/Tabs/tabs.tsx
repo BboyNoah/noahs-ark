@@ -21,7 +21,7 @@ interface ITabsContext {
 
 export const TabsContext = createContext<ITabsContext>({index: 0})
 
-const Tabs: React.FC<TabsProps> = (props) => {
+export const Tabs: React.FC<TabsProps> = (props) => {
     const {
         defaultIndex,
         mode,

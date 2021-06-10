@@ -12,7 +12,7 @@ export interface TabItemProps {
     children?: React.ReactNode
 }
 
-const TabItem: React.FC<TabItemProps> = (props) => {
+export const TabItem: React.FC<TabItemProps> = (props) => {
     const {
         className,
         disabled,
