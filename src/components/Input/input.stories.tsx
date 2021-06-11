@@ -33,3 +33,9 @@ WithAppend.args = {
   append: 'append'
 };
 WithAppend.storyName = '带后缀 Input'
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  icon: "check"
+};
+WithIcon.storyName = '带图标 Input'

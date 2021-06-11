@@ -17,6 +17,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
   prepend?: string | ReactElement;
   /** Input 添加后缀 */
   append?: string | ReactElement;
+  // ChangeEvent<HTMLInputElement> 把传入的 e 修改为 HTMLInputElement的类型
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -38,6 +39,21 @@ export const Input: FC<InputProps> = (props) => {
     'input-group-append': append,
     'input-with-icon': icon
   })
+  // 非受控组件转化为受控组件时，其内部值的处理
+  // 受控组件 与 非受控组件 都是针对表单的
+  // 受控组件 通过state获取值的组件
+  // 非受控组件 直接通过ref获取值
+  // 如 input，没有设置value、prop、defaultValue 等就可以称为非受控组件
+  const fixControlledValue = (value: any) => {
+    if (typeof value === 'undefined' || value === null) {
+      return ''
+    }
+    return value
+  }
+  if ('value' in props) {
+    delete restProps.defaultValue
+    restProps.value = fixControlledValue(props.value)
+  }
   return (
     <div
      className={classes}
