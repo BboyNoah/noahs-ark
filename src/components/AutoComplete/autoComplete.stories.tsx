@@ -125,8 +125,8 @@ export const AjaxAutoComplete: Story<AutoCompleteProps>  = () => {
     const itemWithNum = item as DataSourceType<GitHubUserProps>
     return (
       <>
-        <h2>{itemWithNum.login}</h2>
-        <p>{itemWithNum.url}</p>
+        <b>Name：{itemWithNum.login}  </b>
+        <span>Url: {itemWithNum.url}</span>
       </>
     )
   }

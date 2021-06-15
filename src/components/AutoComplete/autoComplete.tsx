@@ -1,6 +1,8 @@
-import React, { ChangeEvent, FC, useState, useEffect, ReactElement } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC, useState, useEffect, ReactElement, useRef } from 'react'
 import ClassName from 'classnames'
+import Transition from '../Transition/transition'
 import useDebounce from '../../hooks/useDebounce'
+import useClickOutside from '../../hooks/useClickOutside'
 import Input, { InputProps } from '../Input/input'
 import Icon  from '../Icon/icon'
 
@@ -37,67 +39,120 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [inputValue, setInputValue] = useState(value as string)
   const [suggestions, setSuggestions] = useState<DataSourceType[]>([])
   const [loading, setLoading] = useState(false)
+  const [hightLightIndex, setHightLightIndex] = useState(-1)
+  const [showDropdown, setShowDropdown] = useState(false)
+  const triggerSearch = useRef(false)
+  const componentRef = useRef<HTMLDivElement>(null)
   const debounceValue = useDebounce(inputValue, 500)
-
+  useClickOutside(componentRef, () => setShowDropdown(false))
   useEffect(() => {
-    if (debounceValue) {
+    if (debounceValue && triggerSearch.current) {
+      setSuggestions([])
       const results = fetchSuggestions(debounceValue)
       if (results instanceof Promise) {
         setLoading(true)
         results.then(data => {
-          setSuggestions(data)
+          setShowDropdown(!!data.length)
           setLoading(false)
+          setSuggestions(data)
         })
       } else {
+        console.log(results)
+        setShowDropdown(!!results.length)
         setSuggestions(results)
       }
       
     } else {
-      setSuggestions([])
+      setShowDropdown(false)
     }
+    setHightLightIndex(-1)
   }, [debounceValue])
 
-  const classes = ClassName('', {})
+  // const classes = ClassName('', {})
+  const highLight = (index: number) => {
+    if (index < 0) index = 0
+    if (index >= suggestions.length) index = suggestions.length - 1
+    setHightLightIndex(index)
+  }
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    switch (e.key) {
+      case 'Enter':
+        if (suggestions[hightLightIndex]) {
+          handleSelect(suggestions[hightLightIndex])
+        }
+        break
+      case 'ArrowUp':
+        highLight(hightLightIndex - 1)
+        break
+      case 'ArrowDown':
+        highLight(hightLightIndex + 1)
+        break
+      case 'Escape':
+        setShowDropdown(false)
+        break
+      default: 
+        break
+    }
+  }
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.trim()
     setInputValue(value)
+    triggerSearch.current = true
   }
   const handleSelect = (item: DataSourceType) => {
     setInputValue(item.value)
-    setSuggestions([])
+    setShowDropdown(false)
     onSelect && onSelect(item)
+    triggerSearch.current = false
   }
   const itemTemplate = (item: DataSourceType) => {
     return renderOption ? renderOption(item) : item.value
   }
   const generateDropdown = () => {
     return (
-      <ul>
-        {
-          suggestions.map((item, index) => {
-            return (
-              <li key={index} onClick={() => handleSelect(item)}>
-                {itemTemplate(item)}
-              </li>
-            )
-          })
-        }
-      </ul>
+      <Transition 
+        in={showDropdown || loading}
+        timeout={300}
+        animation="zoom-in-top"
+        onExited={() => { setSuggestions([]) }}
+      >
+        <ul className="suggestion-list">
+          { 
+            loading && 
+            <div className="suggstions-loading-icon">
+              <Icon icon="spinner" spin/>
+            </div>
+          }
+          {
+            suggestions.map((item, index) => {
+              const cName = ClassName('suggestion-item', {
+                'is-active': index === hightLightIndex
+              })
+              return (
+                <li
+                key={index}
+                className={cName}
+                onClick={() => handleSelect(item)}
+                >
+                  {itemTemplate(item)}
+                </li>
+              )
+            })
+          }
+        </ul>
+      </Transition>
     )
   }
   return (
-    <>
-      <div className="ark-auto-complete">
-        <Input 
-          value={inputValue}
-          onChange={handleChange}
-          {...restProps}
-        />
-        { loading && <ul><Icon icon="spinner" spin /></ul> }
-        { (suggestions.length > 0) && generateDropdown() }
-      </div>
-      
-    </>
+    <div className="ark-auto-complete" ref={componentRef}>
+      <Input 
+        value={inputValue}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        {...restProps}
+      />
+      { generateDropdown() }
+    </div>
   )
 }
 
