@@ -1,4 +1,3 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Tabs,  { TabsProps } from './tabs';
 import TabItem ,  { TabItemProps } from './tabItem';

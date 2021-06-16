@@ -22,7 +22,7 @@ interface optionProps {
   number: number;
 }
 
-interface GitHubUserProps {
+export interface GitHubUserProps {
   login: string;
   url: string;
   avatar_url: string;
@@ -107,7 +107,7 @@ export const RenderOptAutoComplete: Story<AutoCompleteProps>  = () => {
 };
 RenderOptAutoComplete.storyName = "自定义模版 AutoComplete"
 
-const handleAjaxFetch = (query: string) => {
+export const handleAjaxFetch = (query: string) => {
   return fetch(`https://api.github.com/search/users?q=${query}`, {
     headers: {
       'Authorization': "token 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"
