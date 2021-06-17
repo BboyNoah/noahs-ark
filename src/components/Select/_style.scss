@@ -1,0 +1,87 @@
+.ark-select {
+  position: relative;
+
+  .ark-input {
+    .icon-wrapper {
+      transition: all .3s;
+    }
+  }
+  &.select-focus .ark-input {
+    .icon-wrapper {
+      transform: rotate(180deg);
+    }
+  }
+
+  .input-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 38px;
+    max-width: calc(100% - 35px);
+    padding: 3px 6px 3px 3px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    .selected-tag {
+      height: 32px;
+      padding: 2px 8px 2px 5px;
+      margin-left: 3px;
+      vertical-align: middle;
+      border: 1px solid $menu-item-active-color;
+      color: $menu-item-active-color;
+      border-radius: $border-radius;
+      display: flex;
+      align-items: center;
+      .selected-tag-content {
+        flex: 1;
+        line-height: 24px;
+        margin-right: 4px;
+        cursor: default;
+      }
+      .selectde-tag-icon {
+        cursor: pointer;
+      }
+    }
+  }
+  
+}
+.options-list {
+  list-style:none;
+  padding-left: 0;
+  white-space: nowrap;
+  position: absolute;
+  background: $white;
+  z-index: 100;
+  top: calc(100% + 8px);
+  left: 0;
+  border: $menu-border-width solid $menu-border-color;
+  box-shadow: $submenu-box-shadow;
+  width: 100%;
+  margin-top: 0;
+  .ark-select-option {
+    padding: $menu-item-padding-y $menu-item-padding-x;
+    cursor: pointer;
+    transition: $menu-transition;
+    color: $body-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .option-content {
+      flex: 1;
+    }
+    &:hover {
+      color: $menu-item-active-color !important;
+    }
+    &.is-actived {
+      background: $menu-item-active-color !important;
+      color: $white !important;
+      &:hover {
+        color: $white !important;
+      }
+    }
+    &.is-selected {
+      color: $menu-item-active-color !important;
+    }
+    
+  }
+}
