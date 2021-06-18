@@ -72,6 +72,10 @@
     &:hover {
       color: $menu-item-active-color !important;
     }
+    
+    &.is-selected {
+      color: $menu-item-active-color !important;
+    }
     &.is-actived {
       background: $menu-item-active-color !important;
       color: $white !important;
@@ -79,9 +83,5 @@
         color: $white !important;
       }
     }
-    &.is-selected {
-      color: $menu-item-active-color !important;
-    }
-    
   }
 }

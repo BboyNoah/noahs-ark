@@ -35,6 +35,7 @@ export const Alert: React.FC<BaseAlertProps> = (props) => {
       <div
         className={classes}
         style={style}
+        data-testid="test-alert-id"
       >
         <div className="alert-header">
           <div className="alert-title">{title}</div>

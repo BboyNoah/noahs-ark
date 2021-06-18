@@ -42,3 +42,33 @@ MultipleSelect.args = {
 }
 
 MultipleSelect.storyName = "多选 Select"
+
+const SelectWithDefaultValue:SelectProps  = {
+  defaultValue: '1'
+}
+
+const MultipleSelectWithDefaultValue:SelectProps = {
+  multiple: true,
+  defaultValue: ['1', '2']
+}
+
+export const WithDefaultValue = () => {
+  return (
+    <>
+      <Select {...SelectWithDefaultValue} >
+        <Option value="1" label="option 1" />
+        <Option value="2" label="option 2" />
+        <Option value="3" label="option 3" />
+        <Option value="4" label="option 4" />
+      </Select>
+      <Select {...MultipleSelectWithDefaultValue} >
+        <Option value="1" label="option 1" />
+        <Option value="2" label="option 2" />
+        <Option value="3" label="option 3" />
+        <Option value="4" label="option 4" />
+      </Select>
+    </>
+  )
+}
+
+WithDefaultValue.storyName = "带默认值 Select"

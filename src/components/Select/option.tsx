@@ -20,8 +20,8 @@ export const Option: React.FC<optionProps> = (props) => {
   const context = useContext(SelectContext)
   const classes = classNames('ark-select-option', {
     'is-disabled': disabled,
-    'is-actived': context.value === value,
-    'is-selected': context.selected?.includes(value)
+    'is-selected': context.selected?.includes(value),
+    'is-actived': context.value === value
   })
   const handleClick = () => {
     if (!disabled && !context.selected?.includes(value)) {

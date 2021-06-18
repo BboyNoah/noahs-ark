@@ -1,6 +1,5 @@
-import { cleanup, fireEvent, render, RenderResult, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
 import AutoComplete, { AutoCompleteProps, DataSourceType } from './autoComplete'
-import { GitHubUserProps, handleAjaxFetch } from './autoComplete.stories'
 import { config } from 'react-transition-group'
 
 config.disabled = true

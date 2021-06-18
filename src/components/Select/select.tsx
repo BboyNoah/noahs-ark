@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, FC, ReactElement, useRef, useState, createContext } from 'react'
+import React, { ChangeEvent, KeyboardEvent, FC, ReactElement, useRef, useState, createContext, useEffect } from 'react'
 import ClassName from 'classnames'
 import Transition from '../Transition/transition'
 import Icon  from '../Icon/icon'
@@ -50,13 +50,17 @@ export const Select: FC<SelectProps> = (props) => {
     multiple,
     ...restProps
   } = props
-  const [inputValue, setInputValue] = useState(defaultValue as ValueType)
-  const [seletedList, setSeletedList] = useState<string[]>([])
+  const [inputValue, setInputValue] = useState(defaultValue instanceof Array ? '' : defaultValue as ValueType)
+  const [seletedList, setSeletedList] = useState<string[]>(defaultValue instanceof Array ? defaultValue : (defaultValue ? [defaultValue] : []))
   const [showDropdown, setShowDropdown] = useState(false)
   const [placeholderValue, setPlaceholderValue] = useState(placeholder)
   const componentRef = useRef<HTMLDivElement>(null)
   useClickOutside(componentRef, () => setShowDropdown(false))
 
+  useEffect(() => {
+    onVisibleChange && onVisibleChange(showDropdown)
+  }, [showDropdown])
+  
   const cnames = ClassName('ark-select', {
     'select-focus': showDropdown
   })
