@@ -5,10 +5,19 @@ import { TabsContext } from './tabs'
 export type LabelType = string | number | React.ReactElement
 
 export interface TabItemProps {
+    /**
+     * 序号，不可重复
+     */
     index?: number;
+    /**
+     * Tab 标题显示的内容，支持 HTML 元素
+     */
     label: LabelType;
-    className?: string;
+    /**
+     * 禁用标题元素，不可点击
+     */
     disabled?: boolean;
+    className?: string;
     children?: React.ReactNode
 }
 
