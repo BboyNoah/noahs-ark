@@ -72,11 +72,11 @@ export interface UploadProps {
   /**
    * 设置接受上传的文件类型
    */
-  accept: string;
+  accept?: string;
   /**
    * 设置拖拽上传
    */
-   drag: boolean;
+   drag?: boolean;
 }
 
 export const Upload: FC<UploadProps> = (props) => {
@@ -234,6 +234,7 @@ export const Upload: FC<UploadProps> = (props) => {
       </div>
       <input
        type="file"
+       className="ark-hide-input"
        ref={fileInput}
        style={{display: 'none'}}
        onChange={handleFileChange}
