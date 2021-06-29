@@ -12,7 +12,6 @@ export interface optionProps {
 
 export const Option: React.FC<optionProps> = (props) => {
   const {
-    index,
     disabled,
     value,
     label

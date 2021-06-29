@@ -1,4 +1,5 @@
-import { render, fireEvent, waitFor, cleanup } from "@testing-library/react";
+import '@testing-library/jest-dom'
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import { config } from 'react-transition-group'
 import Select, { SelectProps } from "./select";
 import Option from "./option";

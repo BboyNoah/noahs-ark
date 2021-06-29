@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import Tabs, { TabsProps } from "./tabs";
 import TabItem from "./tabItem";

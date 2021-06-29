@@ -3,12 +3,12 @@ import Icon from "../Icon/icon";
 import Progress from "../Progress/progress";
 import { UploadFile } from "./upload";
 
-export interface UploadList {
+export interface UploadListProp {
   fileList: UploadFile[];
   onRemove: (_file: UploadFile) => void
 }
 
-export const UploadList: React.FC<UploadList> = (props) => {
+export const UploadList: React.FC<UploadListProp> = (props) => {
   const {
     fileList,
     onRemove

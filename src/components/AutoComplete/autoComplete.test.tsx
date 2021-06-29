@@ -1,5 +1,6 @@
+import '@testing-library/jest-dom'
 import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
-import AutoComplete, { AutoCompleteProps, DataSourceType } from './autoComplete'
+import AutoComplete, { AutoCompleteProps } from './autoComplete'
 import { config } from 'react-transition-group'
 
 config.disabled = true

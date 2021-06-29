@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
 import Menu, { MenuProps } from './menu'
 import MenuItem from './menuItem'
@@ -86,17 +87,17 @@ describe('test Menu and MenuItem component', () => {
     expect(verElement).toHaveClass('ark-menu menu-vertical')
   })
   it('should show dropdown items when hover on subMenu', async () => {
-    expect(wrapper.queryByText('drop1')).not.toBeVisible()
+    expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
     const dropdownElement = wrapper.getByText('dropdown')
     fireEvent.mouseEnter(dropdownElement)
     await waitFor(() => {
-      expect(wrapper.queryByText('drop1')).toBeVisible()
+      expect(wrapper.queryByText('drop1')).toBeInTheDocument()
     })
     fireEvent.click(wrapper.getByText('drop1'))
     expect(testProps.onSelect).toHaveBeenCalledWith('3-0')
     fireEvent.mouseLeave(dropdownElement)
     await waitFor(() => {
-      expect(wrapper.queryByText('drop1')).not.toBeVisible()
+      expect(wrapper.queryByText('drop1')).not.toBeInTheDocument()
     })
   })
 })

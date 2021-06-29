@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Select,  { SelectProps } from './select';
-import Option, { optionProps } from './option';
+import Option from './option';
 
 
 export default {

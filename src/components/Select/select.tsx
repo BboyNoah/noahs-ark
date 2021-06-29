@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, FC, ReactElement, useRef, useState, createContext, useEffect } from 'react'
+import React, { FC, useRef, useState, createContext, useEffect } from 'react'
 import ClassName from 'classnames'
 import Transition from '../Transition/transition'
 import Icon  from '../Icon/icon'
@@ -47,8 +47,7 @@ export const Select: FC<SelectProps> = (props) => {
     name,
     children,
     defaultValue,
-    multiple,
-    ...restProps
+    multiple
   } = props
   const [inputValue, setInputValue] = useState(defaultValue instanceof Array ? '' : defaultValue as ValueType)
   const [seletedList, setSeletedList] = useState<string[]>(defaultValue instanceof Array ? defaultValue : (defaultValue ? [defaultValue] : []))

@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react'
 import Alert, { BaseAlertProps } from './alert'
 

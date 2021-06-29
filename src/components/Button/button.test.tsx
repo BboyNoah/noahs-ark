@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import { render, fireEvent } from '@testing-library/react'
 import Button, { ButtonProps } from './button'
 const defaultProps = {

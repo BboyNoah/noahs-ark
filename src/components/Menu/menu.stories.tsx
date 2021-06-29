@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Menu,  { MenuProps } from './menu';
-import MenuItem ,  { MenuItemProps } from './menuItem';
-import SubMenu, { SubMenuProps } from './subMenu';
+import MenuItem from './menuItem';
+import SubMenu from './subMenu';
 
 export default {
   title: 'Noah-Ark/Menu',

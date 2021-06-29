@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 import axios from 'axios'

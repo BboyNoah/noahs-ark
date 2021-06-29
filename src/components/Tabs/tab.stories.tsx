@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import Tabs,  { TabsProps } from './tabs';
-import TabItem ,  { TabItemProps } from './tabItem';
+import TabItem from './tabItem';
 
 export default {
   title: 'Noah-Ark/Tabs',
